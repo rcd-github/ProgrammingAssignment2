@@ -35,3 +35,12 @@ cacheSolve <- function(x, ...) {
   x$setinverse(inv)
   inv
 }
+
+# to make it work, for example, we define a matrix z, so that
+# z <- matrix(c(1,2,3,4), nrow=2)
+# then, we create the various functions using makeCacheMatrix as follows:
+# test <- makeCacheMatrix(z)
+# After that, we call
+# cacheSolve(test)
+# the first time, it calculates the inverse of z with solve and stores the variable in
+# inv. If we call cacheSolve(test) again, it returns the cache value
