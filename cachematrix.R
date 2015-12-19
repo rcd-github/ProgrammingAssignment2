@@ -6,14 +6,14 @@
 # matrix x to the cache. 
 
 makeCacheMatrix <- function(x = matrix()) {
-  inv <- NULL
+  inv <- NULL  # set ORIGINAL value of the inverse to NULL
   set <- function(y) {
     x <<- y
     inv <<- NULL
   }
-  get <- function() x
-  setinverse <- function(solve) inv <<- solve
-  getinverse <- function() inv
+  get <- function() x 
+  setinverse <- function(solve) inv <<- solve # assigns the value of the inverse to cache
+  getinverse <- function() inv  # checks to see whether the inverse has a value NULL or not
   list(set = set, get = get,
        setinverse = setinverse,
        getinverse = getinverse)
@@ -36,11 +36,14 @@ cacheSolve <- function(x, ...) {
   inv
 }
 
-# to make it work, for example, we define a matrix z, so that
+# The code provided by forking the data was correct. I could have changed the variable names,
+# but I decided to leave it as it is, as it added no functionality
+# to make the code work, for example, we define a matrix z, so that
 # z <- matrix(c(1,2,3,4), nrow=2)
 # then, we create the various functions using makeCacheMatrix as follows:
 # test <- makeCacheMatrix(z)
 # After that, we call
 # cacheSolve(test)
+# we can check that the solution is correct by using solve(z)
 # the first time, it calculates the inverse of z with solve and stores the variable in
 # inv. If we call cacheSolve(test) again, it returns the cache value
